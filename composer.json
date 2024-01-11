@@ -1,6 +1,6 @@
 {
-    "name": "moox/builder",
-    "description": "This template is used for generating all Moox packages.",
+    "name": "moox/user",
+    "description": "This is my package user",
     "keywords": [
         "Laravel",
         "Filament",
@@ -18,17 +18,20 @@
     ],
     "require": {
         "spatie/laravel-package-tools": "^1.13.0",
+        "bezhansalleh/filament-shield": "^3.0",
+        "stechstudio/filament-impersonate": "^3.5",
+        "jeffgreco13/filament-breezy": "^2.2",
         "filament/filament": "^3.0"
     },
     "autoload": {
         "psr-4": {
-            "Moox\\Builder\\": "src"
+            "Moox\\User\\": "src"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Moox\\Builder\\BuilderServiceProvider"
+                "Moox\\User\\UserServiceProvider"
             ]
         }
     },

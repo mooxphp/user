@@ -1,6 +1,6 @@
 <?php
 
-namespace Moox\Builder\Resources;
+namespace Moox\User\Resources;
 
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
@@ -12,14 +12,14 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use Moox\Builder\BuilderPlugin;
-use Moox\Builder\Models\Builder;
-use Moox\Builder\Resources\BuilderResource\Pages\ListPage;
-use Moox\Builder\Resources\BuilderResource\Widgets\BuilderWidgets;
+use Moox\User\Models\User;
+use Moox\User\Resources\UserResource\Pages\ListPage;
+use Moox\User\Resources\UserResource\Widgets\UserWidgets;
+use Moox\User\UserPlugin;
 
-class BuilderResource extends Resource
+class UserResource extends Resource
 {
-    protected static ?string $model = Builder::class;
+    protected static ?string $model = User::class;
 
     public static function form(Form $form): Form
     {
@@ -39,14 +39,14 @@ class BuilderResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label(__('builder::translations.name'))
+                    ->label(__('user::translations.name'))
                     ->sortable(),
                 TextColumn::make('started_at')
-                    ->label(__('builder::translations.started_at'))
+                    ->label(__('user::translations.started_at'))
                     ->since()
                     ->sortable(),
                 TextColumn::make('failed')
-                    ->label(__('builder::translations.failed'))
+                    ->label(__('user::translations.failed'))
                     ->sortable(),
             ])
             ->defaultSort('name', 'desc')
@@ -75,23 +75,23 @@ class BuilderResource extends Resource
     public static function getWidgets(): array
     {
         return [
-            BuilderWidgets::class,
+            UserWidgets::class,
         ];
     }
 
     public static function getNavigationBadge(): ?string
     {
-        return BuilderPlugin::make()->getNavigationCountBadge() ? number_format(static::getModel()::count()) : null;
+        return UserPlugin::make()->getNavigationCountBadge() ? number_format(static::getModel()::count()) : null;
     }
 
     public static function getModelLabel(): string
     {
-        return BuilderPlugin::make()->getLabel();
+        return UserPlugin::make()->getLabel();
     }
 
     public static function getPluralModelLabel(): string
     {
-        return BuilderPlugin::make()->getPluralLabel();
+        return UserPlugin::make()->getPluralLabel();
     }
 
     public static function getNavigationLabel(): string
@@ -101,26 +101,26 @@ class BuilderResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return BuilderPlugin::make()->getNavigationGroup();
+        return UserPlugin::make()->getNavigationGroup();
     }
 
     public static function getNavigationSort(): ?int
     {
-        return BuilderPlugin::make()->getNavigationSort();
+        return UserPlugin::make()->getNavigationSort();
     }
 
     public static function getBreadcrumb(): string
     {
-        return BuilderPlugin::make()->getBreadcrumb();
+        return UserPlugin::make()->getBreadcrumb();
     }
 
     public static function shouldRegisterNavigation(): bool
     {
-        return BuilderPlugin::make()->shouldRegisterNavigation();
+        return UserPlugin::make()->shouldRegisterNavigation();
     }
 
     public static function getNavigationIcon(): string
     {
-        return BuilderPlugin::make()->getNavigationIcon();
+        return UserPlugin::make()->getNavigationIcon();
     }
 }

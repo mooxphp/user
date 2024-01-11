@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'breadcrumb' => 'Builder',
-    'title' => 'Builder',
-    'navigation_label' => 'Builder',
-    'navigation_group' => 'Builder Gruppe',
-    'totalone' => 'Builder Eins',
-    'totaltwo' => 'Builder Zwei',
-    'totalthree' => 'Builder Drei',
+    'breadcrumb' => 'User',
+    'title' => 'User',
+    'navigation_label' => 'User',
+    'navigation_group' => 'User Gruppe',
+    'totalone' => 'User Eins',
+    'totaltwo' => 'User Zwei',
+    'totalthree' => 'User Drei',
     'name' => 'Name',
     'started_at' => 'Gestartet',
     'failed' => 'failed',

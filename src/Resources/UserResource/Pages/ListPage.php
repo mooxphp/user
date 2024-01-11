@@ -1,16 +1,16 @@
 <?php
 
-namespace Moox\Builder\Resources\BuilderResource\Pages;
+namespace Moox\User\Resources\UserResource\Pages;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Moox\Builder\Models\Builder;
-use Moox\Builder\Resources\BuilderResource;
-use Moox\Builder\Resources\BuilderResource\Widgets\BuilderWidgets;
+use Moox\User\Models\User;
+use Moox\User\Resources\UserResource;
+use Moox\User\Resources\UserResource\Widgets\UserWidgets;
 
 class ListPage extends ListRecords
 {
-    public static string $resource = BuilderResource::class;
+    public static string $resource = UserResource::class;
 
     public function getActions(): array
     {
@@ -20,20 +20,20 @@ class ListPage extends ListRecords
     public function getHeaderWidgets(): array
     {
         return [
-            BuilderWidgets::class,
+            UserWidgets::class,
         ];
     }
 
     public function getTitle(): string
     {
-        return __('builder::translations.title');
+        return __('user::translations.title');
     }
 
     protected function getHeaderActions(): array
     {
         return [
             CreateAction::make()
-                ->using(function (array $data, string $model): Builder {
+                ->using(function (array $data, string $model): User {
                     return $model::create($data);
                 }),
         ];
