@@ -235,16 +235,14 @@ class UserResource extends Resource
                 ImageColumn::make('profile_photo_path')
                     ->defaultImageUrl(fn ($record): string => 'https://ui-avatars.com/api/?name='.$record->name)
                     ->circular()
+                    ->label(__('Avatar'))
                     ->toggleable(),
                 TextColumn::make('name')
                     ->toggleable()
+                    ->sortable()
                     ->searchable()
                     ->limit(50),
-                TextColumn::make('slug')
-                    ->toggleable()
-                    ->searchable()
-                    ->limit(50),
-                TextColumn::make('first_name')
+                TextColumn::make('last_name')
                     ->label(__('Fullname'))
                     ->formatStateUsing(function ($state, User $user) {
                         return $user->first_name.' '.$user->last_name;
@@ -254,12 +252,31 @@ class UserResource extends Resource
                     ->searchable()
                     ->limit(50),
                 TextColumn::make('email')
+                    ->label('Email')
+                    ->alignEnd()
+                    ->sortable()
                     ->toggleable()
                     ->searchable()
                     ->limit(50),
-                IconColumn::make('email_verified_at'),
-                TextColumn::make('roles.name'),
-
+                IconColumn::make('email_verified_at')
+                    ->label('Verified')
+                    ->sortable()
+                    ->alignStart()
+                    ->icon(fn ($record): string => is_null($record->email_verified_at) ? 'heroicon-o-x-circle' : 'heroicon-o-check-circle')
+                    ->colors([
+                        'success' => fn ($record) => $record->email_verified_at !== null,
+                        'danger' => fn ($record) => $record->email_verified_at === null,
+                    ]),
+                IconColumn::make('roles.name')
+                    ->label(__('Admin'))
+                    ->sortable()
+                    ->alignCenter()
+                    ->icons([
+                        'heroicon-o-shield-exclamation' => fn ($record) => $record->roles->pluck('name')->contains('super_admin'),
+                    ])
+                    ->colors([
+                        'warning' => fn ($record) => $record->roles->pluck('name')->contains('super_admin'),
+                    ]),
             ])
             ->filters([
                 SelectFilter::make('language_id')
