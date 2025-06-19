@@ -17,8 +17,7 @@
         }
     ],
     "require": {
-        "moox/core": "^3.1.2",
-        "stechstudio/filament-impersonate": "^3.5"
+        "moox/core": "^3.1.2"
     },
     "autoload": {
         "psr-4": {
