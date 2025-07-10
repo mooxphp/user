@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Hash;
 use Moox\User\Models\User;
 use Moox\User\Resources\UserResource;
 use Override;
-use STS\FilamentImpersonate\Pages\Actions\Impersonate;
 
 class EditUser extends EditRecord
 {
@@ -18,7 +17,7 @@ class EditUser extends EditRecord
 
     protected function getHeaderActions(): array
     {
-        return [DeleteAction::make(), Impersonate::make()->record($this->getRecord())];
+        return [DeleteAction::make()];
     }
 
     #[Override]
