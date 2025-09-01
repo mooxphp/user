@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "moox/core": "4.0.0-beta.3"
+        "moox/core": "3.1.123"
     },
     "require-dev": {
         "moox/devtools": "self.version"
@@ -32,6 +32,16 @@
             "providers": [
                 "Moox\\User\\UserServiceProvider"
             ]
+        },
+        "moox": {
+            "package": {
+                "title": "Moox User",
+                "info": "User management package for Moox.",
+                "website": "https://moox.org/docs/user",
+                "stability": "stable",
+                "type": "moox-plugin",
+                "template": true
+            }
         }
     },
     "minimum-stability": "stable",
